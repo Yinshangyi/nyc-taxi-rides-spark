@@ -12,5 +12,5 @@ This project is from the Kaggle New York City Taxi Fare Prediction https://www.k
 - pickup_latitude: Latitude where the meter was engaged
 - dropoff_longitude: Longitude where the meter was disengaged
 - dropoff_latitude: Latitude where the meter was disengaged
-- fare_amount: fare of the ride
+- fare_amount: Fare of the ride
 I also used external data in addition to the features provided my Kaggle to take into consideration the weather, the holidays/weekends.
