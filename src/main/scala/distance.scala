@@ -12,12 +12,12 @@ object distance {
       .withColumn("dropoff_longitude_rad", radians(col("dropoff_longitude")))
 
       /* Calculate the latitude and the longitude difference between pickup and dropoff */
-      .withColumn("lat_diff", col("dropoff_latitude_rad") - col("pickup_latitude_rad"))
-      .withColumn("lng_diff", col("dropoff_longitude_rad") - col("pickup_longitude_rad"))
+      .withColumn("haversine_lat_diff", col("dropoff_latitude_rad") - col("pickup_latitude_rad"))
+      .withColumn("haversine_lng_diff", col("dropoff_longitude_rad") - col("pickup_longitude_rad"))
 
       /* Calculate the Haversine formula */
-      .withColumn("haversine", computeHaversineUDF(col("lat_diff"),col("pickup_latitude_rad"),
-        col("dropoff_latitude_rad"),col("lng_diff"),lit(AVG_EARTH_RADIUS)))
+      .withColumn("haversine", computeHaversineUDF(col("haversine_lat_diff"),col("pickup_latitude_rad"),
+        col("dropoff_latitude_rad"),col("haversine_lng_diff"),lit(AVG_EARTH_RADIUS)))
     dfHaversine
 
   }
